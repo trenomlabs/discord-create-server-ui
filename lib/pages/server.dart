@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../widgets/discord_list_tile.dart';
+
 class RemoveScrollGlowBehavior extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(
@@ -160,8 +162,12 @@ class _CreateServerState extends State<CreateServer> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        buildListTile(
-                            "Create My Own", 'assets/images/create-my-own.svg'),
+                        DiscordListTile(
+                            onTap: () {
+                              Navigator.of(context).push(_nextPage());
+                            },
+                            title: "Create My Own",
+                            svgPath: 'assets/images/create-my-own.svg'),
                         const SizedBox(
                           height: 24,
                         ),
@@ -176,31 +182,57 @@ class _CreateServerState extends State<CreateServer> {
                         const SizedBox(
                           height: 8,
                         ),
-                        buildListTile("Gaming", 'assets/images/gaming.svg'),
+                        DiscordListTile(
+                            onTap: () {
+                              Navigator.of(context).push(_nextPage());
+                            },
+                            title: "Gaming",
+                            svgPath: 'assets/images/gaming.svg'),
                         const SizedBox(
                           height: 8,
                         ),
-                        buildListTile(
-                            "School Club", 'assets/images/school-club.svg'),
+                        DiscordListTile(
+                            onTap: () {
+                              Navigator.of(context).push(_nextPage());
+                            },
+                            title: "School Club",
+                            svgPath: 'assets/images/school-club.svg'),
                         const SizedBox(
                           height: 8,
                         ),
-                        buildListTile(
-                            "Study Group", 'assets/images/study-group.svg'),
+                        DiscordListTile(
+                            onTap: () {
+                              Navigator.of(context).push(_nextPage());
+                            },
+                            title: "Study Group",
+                            svgPath: 'assets/images/study-group.svg'),
                         const SizedBox(
                           height: 8,
                         ),
-                        buildListTile("Friends", 'assets/images/friends.svg'),
+                        DiscordListTile(
+                            onTap: () {
+                              Navigator.of(context).push(_nextPage());
+                            },
+                            title: "Friends",
+                            svgPath: 'assets/images/friends.svg'),
                         const SizedBox(
                           height: 8,
                         ),
-                        buildListTile("Artists & Creators",
-                            'assets/images/artists-creators.svg'),
+                        DiscordListTile(
+                            onTap: () {
+                              Navigator.of(context).push(_nextPage());
+                            },
+                            title: "Artists & Creators",
+                            svgPath: 'assets/images/artists-creators.svg'),
                         const SizedBox(
                           height: 8,
                         ),
-                        buildListTile("Local Community",
-                            'assets/images/local-community.svg'),
+                        DiscordListTile(
+                            onTap: () {
+                              Navigator.of(context).push(_nextPage());
+                            },
+                            title: "Local Community",
+                            svgPath: 'assets/images/local-community.svg'),
                         const SizedBox(
                           height: 8,
                         ),
@@ -233,33 +265,6 @@ class _CreateServerState extends State<CreateServer> {
           child: child,
         );
       },
-    );
-  }
-
-  ListTile buildListTile(String title, String svgPath) {
-    return ListTile(
-      onTap: () {
-        Navigator.of(context).push(_nextPage());
-      },
-      leading: SvgPicture.asset(
-        svgPath,
-      ),
-      minLeadingWidth: 48,
-      title: Text(
-        title,
-        style: GoogleFonts.openSans(
-          color: const Color(0xFFdbdcde),
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-      trailing: SvgPicture.asset(
-        'assets/images/chevron-right.svg',
-        colorFilter: const ColorFilter.mode(
-          Color(0xFFb9babe),
-          BlendMode.srcIn,
-        ),
-      ),
     );
   }
 }

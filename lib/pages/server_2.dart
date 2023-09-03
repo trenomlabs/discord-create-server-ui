@@ -1,6 +1,6 @@
+import 'package:discord_create_server/widgets/discord_list_tile.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CreateServer2 extends StatefulWidget {
@@ -88,13 +88,17 @@ class _CreateServer2State extends State<CreateServer2> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      buildListTile("For me and my friends",
-                          'assets/images/local-community.svg'),
+                      DiscordListTile(
+                          onTap: () {},
+                          title: "For me and my friends",
+                          svgPath: 'assets/images/local-community.svg'),
                       const SizedBox(
                         height: 8,
                       ),
-                      buildListTile("For a club or community",
-                          'assets/images/artists-creators.svg'),
+                      DiscordListTile(
+                          onTap: () {},
+                          title: "For a club or community",
+                          svgPath: 'assets/images/artists-creators.svg')
                     ],
                   ),
                 ),
@@ -123,31 +127,6 @@ class _CreateServer2State extends State<CreateServer2> {
               )
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  ListTile buildListTile(String title, String svgPath) {
-    return ListTile(
-      onTap: () {},
-      leading: SvgPicture.asset(
-        svgPath,
-      ),
-      minLeadingWidth: 48,
-      title: Text(
-        title,
-        style: GoogleFonts.openSans(
-          color: const Color(0xFFdbdcde),
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-      trailing: SvgPicture.asset(
-        'assets/images/chevron-right.svg',
-        colorFilter: const ColorFilter.mode(
-          Color(0xFFb9babe),
-          BlendMode.srcIn,
         ),
       ),
     );
