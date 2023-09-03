@@ -1,3 +1,4 @@
+import 'package:discord_create_server/pages/server_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -198,6 +199,11 @@ class _CreateServerState extends State<CreateServer> {
                         const SizedBox(
                           height: 8,
                         ),
+                        buildListTile("Local Community",
+                            'assets/images/local-community.svg'),
+                        const SizedBox(
+                          height: 8,
+                        ),
                       ],
                     ),
                   ),
@@ -210,9 +216,31 @@ class _CreateServerState extends State<CreateServer> {
     );
   }
 
+  Route _nextPage() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const CreateServer2(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1, 0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
   ListTile buildListTile(String title, String svgPath) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(_nextPage());
+      },
       leading: SvgPicture.asset(
         svgPath,
       ),
